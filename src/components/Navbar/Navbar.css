@@ -1,0 +1,489 @@
+/* Fresh Modern Navbar with Red Theme - Fixed Mobile View */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core Color Palette */
+  --primary-red: #e20613;
+  --red-light: #ff3a41;
+  --red-dark: #b7040f;
+  --red-ultra-dark: #8c0009;
+  --red-accent: #ff7a7e;
+  
+  /* Neutrals */
+  --white: #ffffff;
+  --off-white: #f8f8f8;
+  --light-gray: #f0f0f0;
+  --medium-gray: #acacac;
+  --dark-gray: #333333;
+  
+  /* Animation Speeds */
+  --transition-fast: 0.15s;
+  --transition-medium: 0.25s;
+  --transition-slow: 0.4s;
+}
+
+/* Base Styles */
+.navbar-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Container */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 80px;
+  transition: all var(--transition-medium) ease;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+}
+
+.navbar-scrolled {
+  height: 70px;
+}
+
+/* Gradient Background */
+.navbar-bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, var(--red-dark) 0%, var(--primary-red) 50%, var(--red-dark) 100%);
+  box-shadow: 0 2px 20px rgba(226, 6, 19, 0.2);
+  transition: all var(--transition-medium) ease;
+  z-index: -1;
+  height: 100%; /* Ensure height is contained */
+  border: none; /* No borders that could cause lines */
+  outline: none; /* No outlines that could cause lines */
+}
+
+.navbar-scrolled .navbar-bg-gradient {
+  background: linear-gradient(90deg, var(--red-ultra-dark) 0%, var(--red-dark) 50%, var(--red-ultra-dark) 100%);
+  box-shadow: 0 4px 25px rgba(226, 6, 19, 0.3);
+}
+
+/* Main Navbar Layout */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  border: none; /* No borders that could cause lines */
+  outline: none; /* No outlines that could cause lines */
+}
+
+/* Logo Styling */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 1001; /* Higher z-index to stay above mobile menu */
+  border: none; /* No borders */
+}
+
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: height var(--transition-medium) ease;
+  border: none; /* No borders */
+}
+
+.navbar-scrolled .navbar-logo {
+  height: 45px;
+}
+
+/* Navigation Menu */
+.navbar-menu {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 20px;
+  border: none; /* No borders */
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  border: none; /* No borders */
+}
+
+.nav-item {
+  position: relative;
+  border: none; /* No borders */
+}
+
+.nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  letter-spacing: 0.2px;
+  transition: all var(--transition-medium) ease;
+  position: relative;
+  border: none; /* No borders */
+}
+
+/* Hover and Active States for Nav Links */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--white);
+  transform: translateX(-50%);
+  transition: width var(--transition-medium) ease;
+  opacity: 0;
+}
+
+.nav-link:hover::after,
+.nav-item.is-active .nav-link::after {
+  width: 60%;
+  opacity: 1;
+}
+
+.nav-item.is-active .nav-link {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Link Text Animation */
+.link-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.link-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: all var(--transition-slow) ease;
+  z-index: -1;
+}
+
+.nav-link:hover .link-text::before {
+  left: 100%;
+  transition: all 0.8s ease;
+}
+
+/* CTA Section */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+  border: none; /* No borders */
+}
+
+/* Phone Link */
+.navbar-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--transition-medium) ease;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: none; /* No borders */
+}
+
+.navbar-contact:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.phone-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--white);
+}
+
+/* Quote Button */
+.navbar-quote-btn {
+  background-color: var(--white);
+  color: var(--primary-red);
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all var(--transition-medium) ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+}
+
+.navbar-quote-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  transition: all var(--transition-slow) ease;
+  z-index: -1;
+}
+
+.navbar-quote-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(231, 11, 24, 0.15);
+  color: var(--red-dark);
+}
+
+.navbar-quote-btn:hover::before {
+  left: 100%;
+}
+
+/* Mobile Menu Toggle */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+  padding: 0;
+}
+
+.toggle-line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--white);
+  margin: 5px 0;
+  border-radius: 4px;
+  transition: all var(--transition-medium) ease;
+}
+
+/* Hamburger Animation */
+.navbar-toggle.is-active .toggle-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggle.is-active .toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.is-active .toggle-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu Overlay */
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-medium) ease;
+  z-index: 998;
+  border: none; /* No borders */
+}
+
+.navbar-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Styles */
+@media (max-width: 1100px) {
+  .navbar-container {
+    padding: 0 30px;
+  }
+  
+  .nav-link {
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Ensure navbar elements maintain proper visibility */
+  .navbar-wrapper, .navbar-container {
+    height: 70px;
+  }
+  
+  /* Hide normal menu */
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--red-dark) 0%, var(--primary-red) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right var(--transition-slow) cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 999;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    border: none; /* No borders */
+    margin: 0; /* Reset margin */
+  }
+  
+  /* Show menu when active */
+  .navbar-menu.is-open {
+    right: 0;
+  }
+  
+  /* Menu items */
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 0;
+    gap: 15px;
+    overflow-y: auto;
+    max-height: 70vh; /* Allow scrolling for many items */
+    border: none; /* No borders */
+  }
+  
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    border: none; /* No borders */
+  }
+  
+  .nav-link {
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 16px;
+    border: none; /* No borders */
+  }
+  
+  /* Show mobile toggle */
+  .navbar-toggle {
+    display: block;
+    position: relative;
+    z-index: 1002; /* Above everything */
+    border: none; /* No borders */
+  }
+  
+  /* Fixed position for action buttons at bottom of sidebar */
+  .navbar-actions {
+    position: fixed;
+    display: flex;
+    bottom: 40px;
+    left: -100%;
+    width: 80%;
+    max-width: 350px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 999;
+    transition: left var(--transition-slow) cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 20px 0;
+    border: none; /* No borders */
+  }
+  
+  /* Show actions when menu is open */
+  .navbar-menu.is-open ~ .navbar-actions {
+    left: 0;
+  }
+  
+  /* Show phone icon only by default */
+  .navbar-phone-number {
+    display: none;
+  }
+  
+  .navbar-contact {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none; /* No borders */
+  }
+  
+  /* Show number when menu is open */
+  .navbar-menu.is-open ~ .navbar-actions .navbar-phone-number {
+    display: inline-block;
+  }
+  
+  .navbar-menu.is-open ~ .navbar-actions .navbar-contact {
+    border-radius: 4px;
+    padding: 10px 15px;
+    width: 85%;
+    justify-content: center;
+  }
+  
+  /* Full width quote button */
+  .navbar-menu.is-open ~ .navbar-actions .navbar-quote-btn {
+    width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .navbar-logo {
+    height: 40px;
+  }
+  
+  /* Full width menu */
+  .navbar-menu {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Full width actions */
+  .navbar-menu.is-open ~ .navbar-actions {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 30px;
+  }
+  
+  /* Smaller font sizes */
+  .nav-link {
+    font-size: 15px;
+    padding: 12px;
+  }
+  
+  .navbar-phone-number {
+    font-size: 13px;
+  }
+  
+  .navbar-quote-btn {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+}

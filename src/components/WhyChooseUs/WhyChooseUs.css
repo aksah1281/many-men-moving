@@ -1,0 +1,381 @@
+/* Why Choose Us Section Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+.why-choose-us {
+  position: relative;
+  padding: 120px 0;
+  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.why-choose-us.visible .section-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 80px;
+  height: 4px;
+  background: #e20613;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 15px;
+}
+
+/* Advantages Grid */
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.advantage-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation-fill-mode: forwards;
+}
+
+.why-choose-us.visible .advantage-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 0;
+  background: #e20613;
+  transition: height 0.4s ease;
+  z-index: -1;
+}
+
+.advantage-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(226, 6, 19, 0.1);
+}
+
+.advantage-card:hover::before {
+  height: 100%;
+}
+
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+  background: rgba(226, 6, 19, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.icon-wrapper i {
+  font-size: 28px;
+  color: #e20613;
+  transition: all 0.3s ease;
+}
+
+.advantage-card:hover .icon-wrapper {
+  background: #e20613;
+}
+
+.advantage-card:hover .icon-wrapper i {
+  color: white;
+}
+
+.advantage-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 15px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.advantage-card p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: linear-gradient(135deg, #e20613, #c53030);
+  border-radius: 15px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  box-shadow: 0 15px 40px rgba(226, 6, 19, 0.2);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.why-choose-us.visible .highlight-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.highlight-content {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.highlight-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highlight-icon i {
+  font-size: 24px;
+  color: white;
+}
+
+.highlight-text h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 5px;
+}
+
+.highlight-text p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.highlight-button {
+  background: white;
+  color: #e20613;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.highlight-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Background Decorations */
+.section-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-pattern-1 {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(226, 6, 19, 0.05) 0%, rgba(226, 6, 19, 0) 70%);
+  border-radius: 50%;
+}
+
+.bg-pattern-2 {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(226, 6, 19, 0.05) 0%, rgba(226, 6, 19, 0) 70%);
+  border-radius: 50%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .why-choose-us {
+    padding: 90px 0;
+  }
+  
+  .advantages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .highlight-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .highlight-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-choose-us {
+    padding: 70px 0;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .section-header {
+    margin-bottom: 50px;
+  }
+  
+  .advantage-card {
+    padding: 30px 25px;
+  }
+  
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .icon-wrapper i {
+    font-size: 24px;
+  }
+  
+  .advantage-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .highlight-box {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .why-choose-us {
+    padding: 60px 0;
+  }
+  
+  .advantages-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .section-container {
+    padding: 0 20px;
+  }
+  
+  .advantage-card {
+    padding: 25px 20px;
+  }
+  
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .icon-wrapper i {
+    font-size: 20px;
+  }
+  
+  .advantage-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .advantage-card p {
+    font-size: 0.9rem;
+  }
+  
+  .highlight-box {
+    padding: 25px 15px;
+  }
+  
+  .highlight-text h3 {
+    font-size: 1.3rem;
+  }
+  
+  .highlight-text p {
+    font-size: 0.9rem;
+  }
+  
+  .highlight-button {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+}
