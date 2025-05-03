@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation'; // Import usePathname for App Router
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  const pathname = usePathname(); // Get current pathname for active state
 
   // Handle scroll events
   useEffect(() => {
@@ -29,8 +30,7 @@ const Navbar = () => {
   };
 
   // Handle navigation item click
-  const handleNavClick = (linkName) => {
-    setActiveLink(linkName);
+  const handleNavClick = () => {
     setIsMenuOpen(false);
   };
 
@@ -40,7 +40,7 @@ const Navbar = () => {
       
       <div className="navbar-container">
         {/* Logo */}
-        <Link href="/" className="navbar-brand" onClick={() => handleNavClick('home')}>
+        <Link href="/" className="navbar-brand" onClick={handleNavClick}>
           <img src="/logo.jpg" alt="MoveRight Logo" className="navbar-logo" />
         </Link>
         
@@ -58,47 +58,47 @@ const Navbar = () => {
         {/* Navigation Menu */}
         <nav className={`navbar-menu ${isMenuOpen ? 'is-open' : ''}`}>
           <ul className="navbar-nav">
-            <li className={`nav-item ${activeLink === 'home' ? 'is-active' : ''}`}>
+            <li className={`nav-item ${pathname === '/' ? 'is-active' : ''}`}>
               <Link 
                 href="/" 
                 className="nav-link" 
-                onClick={() => handleNavClick('home')}
+                onClick={handleNavClick}
               >
                 <span className="link-text">Home</span>
               </Link>
             </li>
-            <li className={`nav-item ${activeLink === 'furniture' ? 'is-active' : ''}`}>
+            <li className={`nav-item ${pathname === '/furniture-moving' ? 'is-active' : ''}`}>
               <Link 
                 href="/furniture-moving" 
                 className="nav-link" 
-                onClick={() => handleNavClick('furniture')}
+                onClick={handleNavClick}
               >
                 <span className="link-text">Furniture Moving</span>
               </Link>
             </li>
-            <li className={`nav-item ${activeLink === 'junk' ? 'is-active' : ''}`}>
+            <li className={`nav-item ${pathname === '/junk-removal' ? 'is-active' : ''}`}>
               <Link 
                 href="/junk-removal" 
                 className="nav-link" 
-                onClick={() => handleNavClick('junk')}
+                onClick={handleNavClick}
               >
                 <span className="link-text">Junk Removal</span>
               </Link>
             </li>
-            <li className={`nav-item ${activeLink === 'packing' ? 'is-active' : ''}`}>
+            <li className={`nav-item ${pathname === '/packing-services' ? 'is-active' : ''}`}>
               <Link 
                 href="/packing-services" 
                 className="nav-link" 
-                onClick={() => handleNavClick('packing')}
+                onClick={handleNavClick}
               >
                 <span className="link-text">Packing</span>
               </Link>
             </li>
-            <li className={`nav-item ${activeLink === 'about' ? 'is-active' : ''}`}>
+            <li className={`nav-item ${pathname === '/about' ? 'is-active' : ''}`}>
               <Link 
                 href="/about" 
                 className="nav-link" 
-                onClick={() => handleNavClick('about')}
+                onClick={handleNavClick}
               >
                 <span className="link-text">About</span>
               </Link>
