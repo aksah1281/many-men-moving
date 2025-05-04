@@ -4,7 +4,8 @@ import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar/Navbar';
 import PackingServices from '@/components/PackingServices/PackingServices';
 import ContactSection from '@/components/ContactSection/ContactSection';
-//import Footer from '@/components/Footer/Footer';
+import Footer from '@/components/Footer/Footer';
+
 
 export default function PackingServicesPage() {
   // Reset scroll position when the page loads
@@ -29,6 +30,7 @@ export default function PackingServicesPage() {
         <PackingServices />
         <ContactSection />
       </main>
+      <Footer />
     </div>
   );
 }
