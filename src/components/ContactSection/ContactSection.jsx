@@ -111,7 +111,6 @@ const ContactSection = () => {
                   >
                     <option value="residential">Residential Moving</option>
                     <option value="commercial">Commercial Moving</option>
-                    <option value="international">International Moving</option>
                     <option value="storage">Storage Solutions</option>
                     <option value="junk">Junk Removal</option>
                   </select>

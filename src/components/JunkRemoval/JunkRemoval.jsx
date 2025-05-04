@@ -6,7 +6,7 @@ import './JunkRemoval.css';
 
 const JunkRemoval = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeService, setActiveService] = useState(null);
+  const [activeTab, setActiveTab] = useState('residential');
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -99,32 +99,31 @@ const JunkRemoval = () => {
   const itemCategories = [
     {
       category: 'Household Items',
+      icon: 'fa-couch',
       items: ['Furniture', 'Appliances', 'Electronics', 'Mattresses', 'Carpets', 'Clothing', 'Toys']
     },
     {
       category: 'Yard Waste',
+      icon: 'fa-leaf',
       items: ['Tree branches', 'Leaves', 'Grass clippings', 'Soil', 'Stones', 'Garden debris', 'Fencing']
     },
     {
       category: 'Renovation Debris',
+      icon: 'fa-hammer',
       items: ['Drywall', 'Wood', 'Flooring', 'Cabinets', 'Fixtures', 'Tile', 'Concrete']
     },
     {
       category: 'Large Items',
+      icon: 'fa-truck-loading',
       items: ['Hot tubs', 'Pianos', 'Exercise equipment', 'Playground sets', 'BBQ grills', 'Sheds', 'Trampolines']
     }
   ];
-
-  const handleServiceClick = (serviceId) => {
-    setActiveService(activeService === serviceId ? null : serviceId);
-  };
 
   return (
     <div className="junk-removal-page">
       {/* Hero Section */}
       <section className={`junk-hero ${isVisible ? 'visible' : ''}`} ref={heroRef}>
-        <div className="hero-background"></div>
-        <div className="hero-overlay"></div>
+        <div className="hero-gradient-background"></div>
         <div className="hero-content">
           <div className="hero-text">
             <h1>Professional Junk Removal Services</h1>
@@ -166,7 +165,7 @@ const JunkRemoval = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - TABBED DESIGN */}
       <section className="junk-services">
         <div className="section-container">
           <div className="section-header">
@@ -174,39 +173,60 @@ const JunkRemoval = () => {
             <p className="section-subtitle">Comprehensive solutions for all your junk removal needs</p>
           </div>
           
-          <div className="services-grid">
+          {/* Service Tabs Navigation */}
+          <div className="service-tabs">
+            {junkServices.map((service) => (
+              <button
+                key={service.id}
+                className={`service-tab ${activeTab === service.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(service.id)}
+              >
+                <div className="tab-icon">
+                  <i className={`fas ${service.icon}`}></i>
+                </div>
+                <span>{service.title}</span>
+              </button>
+            ))}
+          </div>
+          
+          {/* Service Content Area */}
+          <div className="service-content-container">
             {junkServices.map((service) => (
               <div 
-                key={service.id} 
-                className={`service-card ${activeService === service.id ? 'active' : ''}`}
-                onClick={() => handleServiceClick(service.id)}
+                key={service.id}
+                className={`service-content ${activeTab === service.id ? 'active' : ''}`}
               >
-                <div className="service-card-front">
-                  <div className="service-icon">
+                <div className="service-content-header">
+                  <div className="main-icon">
                     <i className={`fas ${service.icon}`}></i>
                   </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <button className="view-details-btn">
-                    View Details <i className="fas fa-chevron-right"></i>
-                  </button>
+                  <div className="header-text">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
                 </div>
-                <div className="service-card-back">
-                  <h3>{service.title}</h3>
-                  <ul className="service-features">
+                
+                <div className="service-content-features">
+                  <h4>What We Offer:</h4>
+                  <ul className="feature-list">
                     {service.features.map((feature, index) => (
                       <li key={index}>
-                        <i className="fas fa-check"></i>
-                        <span>{feature}</span>
+                        <span className="feature-check">
+                          <i className="fas fa-check"></i>
+                        </span>
+                        <span className="feature-text">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <button className="view-less-btn" onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveService(null);
-                  }}>
-                    <i className="fas fa-chevron-left"></i> Back
-                  </button>
+                </div>
+                
+                <div className="service-cta">
+                  <Link href="/quote" className="service-quote-btn">
+                    Get a Quote <i className="fas fa-arrow-right"></i>
+                  </Link>
+                  <Link href={`/${service.id}-junk-removal`} className="service-more-btn">
+                    Learn More
+                  </Link>
                 </div>
               </div>
             ))}
@@ -225,6 +245,9 @@ const JunkRemoval = () => {
           <div className="items-grid">
             {itemCategories.map((category, index) => (
               <div key={index} className="category-card">
+                <div className="category-icon">
+                  <i className={`fas ${category.icon}`}></i>
+                </div>
                 <h3 className="category-title">{category.category}</h3>
                 <ul className="items-list">
                   {category.items.map((item, idx) => (

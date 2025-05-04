@@ -1,6 +1,6 @@
 import './globals.css';
-import Navbar from '@/components/Navbar/Navbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
 export const metadata = {
   title: 'Many Men Moving - Furniture Moving, Junk Removal & Packing Services',
   description: 'Professional moving services including furniture moving, junk removal, and packing services.',
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   );

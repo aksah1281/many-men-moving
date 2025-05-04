@@ -6,7 +6,7 @@ import './FurnitureMoving.css';
 
 const FurnitureMoving = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeService, setActiveService] = useState(null);
+  const [activeTab, setActiveTab] = useState('residential');
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -95,16 +95,11 @@ const FurnitureMoving = () => {
     }
   ];
 
-  const handleServiceClick = (serviceId) => {
-    setActiveService(activeService === serviceId ? null : serviceId);
-  };
-
   return (
     <div className="furniture-moving-page">
       {/* Hero Section */}
       <section className={`furniture-hero ${isVisible ? 'visible' : ''}`} ref={heroRef}>
-        <div className="hero-background"></div>
-        <div className="hero-overlay"></div>
+        <div className="hero-gradient-background"></div>
         <div className="hero-content">
           <div className="hero-text">
             <h1>Professional Furniture Moving Services</h1>
@@ -146,7 +141,7 @@ const FurnitureMoving = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - NEW TABBED DESIGN */}
       <section className="furniture-services">
         <div className="section-container">
           <div className="section-header">
@@ -154,39 +149,60 @@ const FurnitureMoving = () => {
             <p className="section-subtitle">Specialized solutions for all your furniture moving needs</p>
           </div>
           
-          <div className="services-grid">
+          {/* Service Tabs Navigation */}
+          <div className="service-tabs">
+            {furnitureServices.map((service) => (
+              <button
+                key={service.id}
+                className={`service-tab ${activeTab === service.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(service.id)}
+              >
+                <div className="tab-icon">
+                  <i className={`fas ${service.icon}`}></i>
+                </div>
+                <span>{service.title}</span>
+              </button>
+            ))}
+          </div>
+          
+          {/* Service Content Area */}
+          <div className="service-content-container">
             {furnitureServices.map((service) => (
               <div 
-                key={service.id} 
-                className={`service-card ${activeService === service.id ? 'active' : ''}`}
-                onClick={() => handleServiceClick(service.id)}
+                key={service.id}
+                className={`service-content ${activeTab === service.id ? 'active' : ''}`}
               >
-                <div className="service-card-front">
-                  <div className="service-icon">
+                <div className="service-content-header">
+                  <div className="main-icon">
                     <i className={`fas ${service.icon}`}></i>
                   </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <button className="view-details-btn">
-                    View Details <i className="fas fa-chevron-right"></i>
-                  </button>
+                  <div className="header-text">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
                 </div>
-                <div className="service-card-back">
-                  <h3>{service.title}</h3>
-                  <ul className="service-features">
+                
+                <div className="service-content-features">
+                  <h4>What We Offer:</h4>
+                  <ul className="feature-list">
                     {service.features.map((feature, index) => (
                       <li key={index}>
-                        <i className="fas fa-check"></i>
-                        <span>{feature}</span>
+                        <span className="feature-check">
+                          <i className="fas fa-check"></i>
+                        </span>
+                        <span className="feature-text">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <button className="view-less-btn" onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveService(null);
-                  }}>
-                    <i className="fas fa-chevron-left"></i> Back
-                  </button>
+                </div>
+                
+                <div className="service-cta">
+                  <Link href="/quote" className="service-quote-btn">
+                    Get a Quote <i className="fas fa-arrow-right"></i>
+                  </Link>
+                  <Link href={`/${service.id}-moving`} className="service-more-btn">
+                    Learn More
+                  </Link>
                 </div>
               </div>
             ))}

@@ -7,27 +7,12 @@ import './HeroSection.css';
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeBox, setActiveBox] = useState(null);
-  const [currentImage, setCurrentImage] = useState(1);
   
-  // Background images array (you can add more images as needed)
-  const backgroundImages = [
-    '/hero-moving-bg.jpg',
-    '/hero-moving-bg-2.jpg',
-    '/hero-moving-bg-3.jpg',
-    '/hero-moving-bg-4.jpg'
-  ];
-
   // Set loaded state after component mounts for animations
   useEffect(() => {
     setIsLoaded(true);
-    
-    // Image rotation effect
-    const imageInterval = setInterval(() => {
-      setCurrentImage(prev => (prev >= backgroundImages.length ? 1 : prev + 1));
-    }, 5000); // Change image every 5 seconds
-    
     return () => {
-      clearInterval(imageInterval);
+      setIsLoaded(false);
     };
   }, []);
 
@@ -38,7 +23,7 @@ const HeroSection = () => {
       icon: 'fa-couch',
       title: 'Furniture Moving',
       description: 'Professional handling of your valuable furniture with care and precision.',
-      link: '/moving-services'
+      link: '/furniture-moving'
     },
     {
       id: 'junk',
@@ -58,30 +43,19 @@ const HeroSection = () => {
 
   return (
     <section className={`hero-section ${isLoaded ? 'loaded' : ''}`}>
-      {/* Background Image Slideshow */}
-      <div className="hero-background">
-        {backgroundImages.map((img, index) => (
-          <div 
-            key={index} 
-            className={`hero-bg-image ${currentImage === index + 1 ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${img})` }}
-          ></div>
-        ))}
-        
-        {/* Animated 3D Box Elements */}
-        <div className="box-elements">
-          <div className="floating-box box-1"></div>
-          <div className="floating-box box-2"></div>
-          <div className="floating-box box-3"></div>
-          <div className="floating-box box-4"></div>
-          <div className="floating-truck">
-            <i className="fas fa-truck-moving"></i>
-          </div>
+      {/* Gradient Background */}
+      <div className="hero-gradient-background"></div>
+      
+      {/* Animated 3D Box Elements */}
+      <div className="box-elements">
+        <div className="floating-box box-1"></div>
+        <div className="floating-box box-2"></div>
+        <div className="floating-box box-3"></div>
+        <div className="floating-box box-4"></div>
+        <div className="floating-truck">
+          <i className="fas fa-truck-moving"></i>
         </div>
       </div>
-      
-      {/* Colored Overlay */}
-      <div className="overlay"></div>
       
       {/* Main Hero Content */}
       <div className="hero-content">

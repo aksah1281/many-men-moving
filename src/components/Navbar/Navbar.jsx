@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Import usePathname for App Router
+import { usePathname } from 'next/navigation';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname(); // Get current pathname for active state
+  const pathname = usePathname();
 
   // Handle scroll events
   useEffect(() => {
@@ -20,7 +20,13 @@ const Navbar = () => {
       }
     };
 
+    // Add event listener
     window.addEventListener('scroll', handleScroll);
+    
+    // Initial check on mount
+    handleScroll();
+    
+    // Cleanup
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -114,7 +120,7 @@ const Navbar = () => {
             </svg>
             <span className="navbar-phone-number">1-234-567-8910</span>
           </a>
-          <Link href="/quote" className="navbar-quote-btn">
+          <Link href="/quote" className="navbar-quote-btn" onClick={handleNavClick}>
             Get a Free Quote
           </Link>
         </div>
