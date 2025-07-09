@@ -1,5 +1,6 @@
 import './globals.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: 'Many Men Moving - Furniture Moving, Junk Removal & Packing Services',

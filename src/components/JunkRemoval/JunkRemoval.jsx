@@ -130,7 +130,7 @@ const JunkRemoval = () => {
             <p>Fast, efficient, and eco-friendly removal of unwanted items, debris, and clutter</p>
             <div className="hero-cta">
               <Link href="/quote" className="primary-btn">Get a Free Quote</Link>
-              <a href="tel:1234567890" className="secondary-btn">
+              <a href="tel:5402164132" className="secondary-btn">
                 <i className="fas fa-phone-alt"></i> Call Now
               </a>
             </div>
@@ -328,8 +328,8 @@ const JunkRemoval = () => {
               <Link href="/quote" className="cta-primary-btn">
                 Get Your Free Quote <i className="fas fa-arrow-right"></i>
               </Link>
-              <a href="tel:1234567890" className="cta-secondary-btn">
-                <i className="fas fa-phone-alt"></i> Call (123) 456-7890
+              <a href="tel:5402164132" className="cta-secondary-btn">
+                <i className="fas fa-phone-alt"></i> Call (540) 216-4132
               </a>
             </div>
           </div>

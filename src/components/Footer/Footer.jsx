@@ -79,18 +79,18 @@ const Footer = () => {
               <ul className="contact-info">
                 <li>
                   <i className="fas fa-map-marker-alt"></i>
-                  <p>1234 Moving Avenue, Tampa, FL 33602</p>
+                  <p>214 W Emily St, Tampa, FL 33603</p>
                 </li>
                 <li>
                   <i className="fas fa-phone-alt"></i>
                   <p>
-                    <a href="tel:1234567890">(123) 456-7890</a>
+                    <a href="tel:5402164132">(540) 216-4132</a>
                   </p>
                 </li>
                 <li>
                   <i className="fas fa-envelope"></i>
                   <p>
-                    <a href="mailto:info@manymenmoving.com">info@manymenmoving.com</a>
+                    <a href="mailto:manymenmoves@proton.me">manymenmoves@proton.me</a>
                   </p>
                 </li>
                 <li>
@@ -108,6 +108,9 @@ const Footer = () => {
         <div className="footer-container">
           <div className="copyright">
             <p>&copy; {currentYear} Many Men Moving. All Rights Reserved.</p>
+            <p className="developer-credit">
+              Website developed by <strong>Akash Patel</strong> | <a href="mailto:akashp1412@gmail.com">akashp1412@gmail.com</a>
+            </p>
           </div>
           <div className="footer-bottom-links">
             <Link href="/privacy-policy">Privacy Policy</Link>

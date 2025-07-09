@@ -141,7 +141,7 @@ const ContactSection = () => {
                   <div className="icon phone-icon"></div>
                   <div>
                     <h3>Call Us</h3>
-                    <a href="tel:1234567890">(123) 456-7890</a>
+                    <a href="tel:5402164132">(540) 216-4132</a>
                     <p className="hours">Available 8AM - 7PM</p>
                   </div>
                 </div>
@@ -150,7 +150,7 @@ const ContactSection = () => {
                   <div className="icon email-icon"></div>
                   <div>
                     <h3>Email Us</h3>
-                    <a href="mailto:info@manymenmoving.com">info@manymenmoving.com</a>
+                    <a href="mailto:manymenmoves@proton.me">manymenmoves@proton.me</a>
                   </div>
                 </div>
                 
@@ -172,11 +172,11 @@ const ContactSection = () => {
                   <h3>Our Location</h3>
                   <address>
                     <p>ManyMen Moving Company</p>
-                    <p>1234 Moving Avenue</p>
-                    <p>Tampa, FL 33602</p>
+                    <p>214 W Emily St</p>
+                    <p>Tampa, FL 33603</p>
                   </address>
                   <a 
-                    href="https://maps.google.com/?q=Tampa,FL" 
+                    href="https://maps.google.com/?q=214+W+Emily+St,+Tampa,+FL+33603" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="directions-btn"
@@ -187,7 +187,7 @@ const ContactSection = () => {
                 
                 <div className="map">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224444.05340991474!2d-82.5303746513319!3d27.99471393245456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2b782b3b9d1e1%3A0xa75f1389af96b463!2sTampa%2C%20FL!5e0!3m2!1sen!2sus!4v1682619208963!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3523.7912345678!2d-82.4596789!3d27.9878456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c7b123456789%3A0xabcdef123456789!2s214%20W%20Emily%20St%2C%20Tampa%2C%20FL%2033603!5e0!3m2!1sen!2sus!4v1682619208963!5m2!1sen!2sus"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
